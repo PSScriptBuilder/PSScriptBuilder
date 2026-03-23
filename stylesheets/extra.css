@@ -1,0 +1,9 @@
+/* Use full content width */
+.md-content {
+  max-width: 100%;
+}
+
+/* Wider content area for long cmdlet names */
+.md-grid {
+  max-width: 1440px;
+}
