@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="ps-home">
+
+  <div class="ps-home__header">
+    <img src="{{ base_url }}/assets/logo.svg" alt="PSScriptBuilder" class="ps-home__logo">
+    <div>
+      <h1 class="ps-home__title">PSScriptBuilder</h1>
+      <p class="ps-home__desc">A PowerShell module that builds a single deployable script from multi-file projects — with automatic dependency resolution, topological sorting, and integrated release management.</p>
+    </div>
+  </div>
+
+  <div class="ps-home__install">
+    <code class="ps-install-cmd">Install-Module -Name PSScriptBuilder -Scope CurrentUser</code>
+  </div>
+
+  <div class="ps-home__nav">
+    <a href="{{ base_url }}/getting-started/installation/" class="ps-nav-card">
+      <span class="ps-nav-card__title">Getting Started</span>
+      <span class="ps-nav-card__desc">Install the module, set up your project structure, and run your first build.</span>
+    </a>
+    <a href="{{ base_url }}/guides/configuration/" class="ps-nav-card">
+      <span class="ps-nav-card__title">Guides</span>
+      <span class="ps-nav-card__desc">In-depth guides for collectors, templates, dependency analysis, and release management.</span>
+    </a>
+    <a href="{{ base_url }}/cmdlets/" class="ps-nav-card">
+      <span class="ps-nav-card__title">Cmdlet Reference</span>
+      <span class="ps-nav-card__desc">Complete reference for all public cmdlets with parameters, outputs, and examples.</span>
+    </a>
+    <a href="{{ base_url }}/examples/" class="ps-nav-card">
+      <span class="ps-nav-card__title">Examples</span>
+      <span class="ps-nav-card__desc">Twelve runnable examples from a simple function build to a full release workflow.</span>
+    </a>
+  </div>
+
+</div>
+{% endblock %}

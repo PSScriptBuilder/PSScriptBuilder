@@ -1,0 +1,15 @@
+{{USING_STATEMENTS}}
+
+{{Header}}
+
+# --- Configuration ---
+{{Configuration}}
+
+# --- Enums ---
+{{ENUM_DEFINITIONS}}
+
+# --- Classes ---
+{{CLASS_DEFINITIONS}}
+
+# --- Functions ---
+{{FUNCTION_DEFINITIONS}}

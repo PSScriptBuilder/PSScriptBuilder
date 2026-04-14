@@ -1,0 +1,121 @@
+/* Use full content width */
+.md-content {
+  max-width: 100%;
+}
+
+/* Wider layout grid */
+.md-grid {
+  max-width: 1440px;
+}
+
+/* Prevent GitHub repo name from being truncated in the header */
+.md-source__repository {
+  max-width: 12rem;
+}
+
+/* Reduce gap between logo and site title */
+.md-header__button.md-logo {
+  margin-right: -0.3rem;
+  padding-right: 0;
+}
+
+/* Larger logo in header */
+.md-header__button.md-logo img {
+  height: 48px;
+  width: 48px;
+}
+
+/* ============================================================
+   Home Page
+   ============================================================ */
+.ps-home {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+}
+
+.ps-home__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ps-home__logo {
+  width: 112px;
+  height: 112px;
+  flex-shrink: 0;
+  margin-top: 0.35rem;
+}
+
+.ps-home .ps-home__title {
+  font-size: 2.5rem !important;
+  font-weight: 900 !important;
+  margin: 0 0 0.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.ps-home__desc {
+  font-size: 1rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.ps-home__install {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.ps-install-cmd {
+  font-family: var(--md-code-font-family), 'Consolas', monospace;
+  font-size: 0.9rem;
+  color: var(--md-code-fg-color);
+  background: none;
+  padding: 0;
+}
+
+.ps-home__nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .ps-home__nav {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ps-nav-card {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+
+.ps-nav-card:hover {
+  border-color: var(--md-primary-fg-color);
+  text-decoration: none;
+}
+
+.ps-nav-card__title {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--md-primary-fg-color);
+  margin-bottom: 0.35rem;
+}
+
+.ps-nav-card__desc {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.6;
+}
