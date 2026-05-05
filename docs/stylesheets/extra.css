@@ -1,0 +1,93 @@
+/* Use full content width */
+.md-content {
+  max-width: 100%;
+}
+
+/* Wider layout grid */
+.md-grid {
+  max-width: 1440px;
+}
+
+/* Prevent GitHub repo name from being truncated in the header */
+.md-source__repository {
+  max-width: 12rem;
+}
+
+/* Reduce gap between logo and site title */
+.md-header__button.md-logo {
+  margin-right: -0.3rem;
+  padding-right: 0;
+}
+
+/* Larger logo in header */
+.md-header__button.md-logo img {
+  height: 48px;
+  width: 48px;
+}
+
+/* ============================================================
+   Home Page
+   ============================================================ */
+.ps-home {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+.ps-home__header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.ps-home__logo {
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.ps-home__title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0 0 0.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--md-primary-fg-color);
+}
+
+.ps-home__desc {
+  font-size: 1rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.ps-home__text {
+  margin: 0;
+  padding: 0;
+}
+
+/* Grid card titles on home page */
+.md-typeset .grid.cards > ul > li > p:first-child strong {
+  color: var(--md-primary-fg-color);
+}
+
+/* Grid card arrow links on home page - muted, not competing with title */
+.md-typeset .grid.cards > ul > li > p:last-child a {
+  color: var(--md-default-fg-color--light);
+}
+
+.ps-home__nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .ps-home__nav {
+    grid-template-columns: 1fr;
+  }
+}

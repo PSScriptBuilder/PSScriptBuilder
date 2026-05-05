@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#012456"/>
+      <stop offset="100%" stop-color="#001333"/>
+    </linearGradient>
+    <linearGradient id="separator" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D5AA7" stop-opacity="0.5"/>
+      <stop offset="70%" stop-color="#0D5AA7" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0D5AA7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="divider" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D5AA7" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#0D5AA7" stop-opacity="0.4"/>
+      <stop offset="70%" stop-color="#0D5AA7" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0D5AA7" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="420" fill="url(#bg)"/>
+
+  <!-- Dot grid texture -->
+  <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="#0D5AA7" opacity="0.1"/>
+  </pattern>
+  <rect width="1000" height="420" fill="url(#dots)"/>
+
+  <!-- === LEFT COLUMN === -->
+
+  <!-- Logo 107x107 -->
+  <svg x="60" y="47" width="107" height="107" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="logo-bg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#012456"/>
+        <stop offset="100%" stop-color="#001a3a"/>
+      </linearGradient>
+    </defs>
+    <rect x="5" y="5" width="246" height="246" fill="url(#logo-bg)" stroke="#0D5AA7" stroke-width="10"/>
+    <text x="18" y="52" font-family="'Consolas', 'Courier New', monospace" font-size="42" fill="#2B87D3" opacity="0.9">PS&gt;</text>
+    <text x="128" y="128" font-family="'Consolas', 'Courier New', monospace" font-size="104" font-weight="700" fill="#C8DDEF" text-anchor="middle" dy="0.35em">SB</text>
+  </svg>
+
+  <!-- Title -->
+  <text x="189" y="96" font-family="Segoe UI, system-ui, sans-serif" font-size="56" font-weight="700" fill="#ffffff" letter-spacing="1">PSScriptBuilder</text>
+
+  <!-- Tagline -->
+  <text x="191" y="138" font-family="Segoe UI, system-ui, sans-serif" font-size="22" fill="#DCDCAA">Script building, evolved.</text>
+
+  <!-- Separator line -->
+  <rect x="60" y="178" width="600" height="2" fill="url(#separator)" rx="1"/>
+
+  <!-- Subtitle -->
+  <text x="60" y="218" font-family="Segoe UI, system-ui, sans-serif" font-size="22" font-weight="600" fill="#3A96DD">Dependency-Aware Script Builder for PowerShell</text>
+
+  <!-- Description -->
+  <text x="60" y="265" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#a0aab4">Compile multi-file PowerShell projects into a single deployable script &#x2014;</text>
+  <text x="60" y="292" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#a0aab4">with AST analysis, dependency resolution, topological sorting,</text>
+  <text x="60" y="319" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#a0aab4">and release management.</text>
+
+  <!-- Footer -->
+  <line x1="60" y1="354" x2="940" y2="354" stroke="#0D3670" stroke-width="1.5"/>
+  <text x="60"  y="373" font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#3A96DD" font-weight="600">docs.psscriptbuilder.com</text>
+  <text x="940" y="373" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#6a8fa8" text-anchor="end">github.com/PSScriptBuilder &#xB7; PSGallery &#xB7; MIT License</text>
+
+  <!-- === VERTICAL DIVIDER === -->
+  <rect x="670" y="40" width="1.5" height="300" fill="url(#divider)"/>
+
+  <!-- === RIGHT COLUMN — Feature list === -->
+  <!-- Header -->
+  <text x="700" y="83" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#6a8fa8" letter-spacing="2">FEATURES</text>
+
+  <!-- Feature items -->
+  <!-- 1 -->
+  <circle cx="712" cy="113" r="5" fill="#3A96DD"/>
+  <text x="730" y="118" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">AST Analysis</text>
+
+  <!-- 2 -->
+  <circle cx="712" cy="145" r="5" fill="#3A96DD"/>
+  <text x="730" y="150" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">Dependency Resolution</text>
+
+  <!-- 3 -->
+  <circle cx="712" cy="177" r="5" fill="#3A96DD"/>
+  <text x="730" y="182" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">Topological Sort</text>
+
+  <!-- 4 -->
+  <circle cx="712" cy="209" r="5" fill="#3A96DD"/>
+  <text x="730" y="214" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">Cycle Detection</text>
+
+  <!-- 5 -->
+  <circle cx="712" cy="241" r="5" fill="#3A96DD"/>
+  <text x="730" y="246" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">Template Engine</text>
+
+  <!-- 6 -->
+  <circle cx="712" cy="273" r="5" fill="#3A96DD"/>
+  <text x="730" y="278" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">Release Management</text>
+
+  <!-- 7 -->
+  <circle cx="712" cy="305" r="5" fill="#3A96DD"/>
+  <text x="730" y="310" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">PS 5.1 Compatible</text>
+
+</svg>

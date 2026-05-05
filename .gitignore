@@ -1,0 +1,5 @@
+gl-secret-detection-report.json
+build/LocalFeed/
+examples/**/build/Output/
+examples/**/output.ps1
+examples/**/output.ps1.*.bak

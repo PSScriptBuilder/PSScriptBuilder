@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#012456"/>
+      <stop offset="100%" stop-color="#001333"/>
+    </linearGradient>
+    <linearGradient id="separator" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D5AA7" stop-opacity="0.5"/>
+      <stop offset="70%" stop-color="#0D5AA7" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0D5AA7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="divider" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D5AA7" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#0D5AA7" stop-opacity="0.4"/>
+      <stop offset="70%" stop-color="#0D5AA7" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0D5AA7" stop-opacity="0"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#3A96DD"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#4EC9B0"/>
+    </marker>
+    <marker id="arrow-gold" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#DCDCAA"/>
+    </marker>
+    <filter id="glow-gold" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+      <feFlood flood-color="#DCDCAA" flood-opacity="0.55" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="420" fill="url(#bg)"/>
+
+  <!-- Dot grid texture -->
+  <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="#0D5AA7" opacity="0.1"/>
+  </pattern>
+  <rect width="1000" height="420" fill="url(#dots)"/>
+
+  <!-- === LEFT COLUMN === -->
+
+  <!-- Logo 107x107 -->
+  <svg x="60" y="47" width="107" height="107" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="logo-bg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#012456"/>
+        <stop offset="100%" stop-color="#001a3a"/>
+      </linearGradient>
+    </defs>
+    <rect x="5" y="5" width="246" height="246" fill="url(#logo-bg)" stroke="#0D5AA7" stroke-width="10"/>
+    <text x="18" y="52" font-family="'Consolas', 'Courier New', monospace" font-size="42" fill="#2B87D3" opacity="0.9">PS&gt;</text>
+    <text x="128" y="128" font-family="'Consolas', 'Courier New', monospace" font-size="104" font-weight="700" fill="#C8DDEF" text-anchor="middle" dy="0.35em">SB</text>
+  </svg>
+
+  <!-- Title -->
+  <text x="189" y="96" font-family="Segoe UI, system-ui, sans-serif" font-size="56" font-weight="700" fill="#ffffff" letter-spacing="1">PSScriptBuilder</text>
+
+  <!-- Tagline -->
+  <text x="191" y="138" font-family="Segoe UI, system-ui, sans-serif" font-size="22" fill="#DCDCAA">Script building, evolved.</text>
+
+  <!-- Separator line -->
+  <rect x="60" y="178" width="575" height="2" fill="url(#separator)" rx="1"/>
+
+  <!-- Subtitle -->
+  <text x="60" y="218" font-family="Segoe UI, system-ui, sans-serif" font-size="22" font-weight="600" fill="#3A96DD">Dependency-Aware Script Builder for PowerShell</text>
+
+  <!-- Description -->
+  <text x="60" y="265" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#a0aab4">Compile multi-file PowerShell projects into a single deployable script &#x2014;</text>
+  <text x="60" y="292" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#a0aab4">with AST analysis, dependency resolution, topological sorting,</text>
+  <text x="60" y="319" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#a0aab4">and release management.</text>
+
+  <!-- Footer -->
+  <line x1="60" y1="354" x2="940" y2="354" stroke="#0D3670" stroke-width="1.5"/>
+  <text x="60"  y="373" font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#3A96DD" font-weight="600">docs.psscriptbuilder.com</text>
+  <text x="940" y="373" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#6a8fa8" text-anchor="end">github.com/PSScriptBuilder &#xB7; PSGallery &#xB7; MIT License</text>
+
+  <!-- === VERTICAL DIVIDER === -->
+  <rect x="660" y="40" width="1.5" height="300" fill="url(#divider)"/>
+
+  <!-- === RIGHT COLUMN — Dependency Pyramid === -->
+
+  <!-- Row 1: enum Status + class Logger -->
+  <rect x="695" y="55" width="100" height="52" rx="4" fill="#0D3670" stroke="#3A96DD" stroke-width="1.5"/>
+  <text x="701" y="68"  font-family="'Consolas', 'Courier New', monospace" font-size="11" fill="#3A96DD" text-anchor="start">enum</text>
+  <text x="745" y="81" font-family="'Consolas', 'Courier New', monospace" font-size="15" fill="#C8DDEF" text-anchor="middle" dominant-baseline="central">Status</text>
+
+  <rect x="840" y="55" width="100" height="52" rx="4" fill="#0D3670" stroke="#4EC9B0" stroke-width="1.5"/>
+  <text x="846" y="68"  font-family="'Consolas', 'Courier New', monospace" font-size="11" fill="#4EC9B0" text-anchor="start">class</text>
+  <text x="890" y="81" font-family="'Consolas', 'Courier New', monospace" font-size="15" fill="#C8DDEF" text-anchor="middle" dominant-baseline="central">Logger</text>
+
+  <!-- Funnel arrows: Status+Logger → Get-Log (5px gap each end) -->
+  <line x1="745" y1="112" x2="790" y2="150" stroke="#3A96DD" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="890" y1="112" x2="844" y2="150" stroke="#4EC9B0" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+
+  <!-- Row 2: function Get-Log -->
+  <rect x="763" y="155" width="108" height="52" rx="4" fill="#0D3670" stroke="#DCDCAA" stroke-width="1.5"/>
+  <text x="769" y="168" font-family="'Consolas', 'Courier New', monospace" font-size="11" fill="#DCDCAA" text-anchor="start">function</text>
+  <text x="817" y="181" font-family="'Consolas', 'Courier New', monospace" font-size="15" fill="#C8DDEF" text-anchor="middle" dominant-baseline="central">Get-Log</text>
+
+  <!-- Arrow: Get-Log → Script.ps1 -->
+  <line x1="817" y1="212" x2="817" y2="250" stroke="#DCDCAA" stroke-width="1.5" marker-end="url(#arrow-gold)"/>
+
+  <!-- Row 3: Script.ps1 -->
+  <rect x="752" y="255" width="130" height="62" rx="4" fill="#1E4D8C" stroke="#DCDCAA" stroke-width="2" filter="url(#glow-gold)"/>
+  <text x="758" y="268" font-family="'Consolas', 'Courier New', monospace" font-size="11" fill="#3A96DD" text-anchor="start">PS&gt;</text>
+  <text x="817" y="286" font-family="'Consolas', 'Courier New', monospace" font-size="17" fill="#DCDCAA" text-anchor="middle" dominant-baseline="central">Script.ps1</text>
+
+</svg>

@@ -1,0 +1,1005 @@
+/* =========================================================
+   PSScriptBuilder - Custom Styles
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   CSS Variables / Theming
+   --------------------------------------------------------- */
+:root {
+    --primary-color: #012456;
+    --secondary-color: #5391d3;
+    --accent-color: #00bcf2;
+    --dark-bg: #0a0e27;
+    --light-bg: #f8f9fa;
+    --body-bg: #ffffff;
+    --body-color: #212529;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0,0,0,0.08);
+    --section-title-color: #012456;
+    --section-subtitle-color: #6c757d;
+    --section-alt-bg: #f4f6fa;
+    --section-border-color: #dee2e6;
+    --code-example-bg: #f0f4f8;
+}
+
+[data-theme="light"] {
+    --dark-bg: #0a0e27;
+    --light-bg: #f8f9fa;
+    --body-bg: #ffffff;
+    --body-color: #212529;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0,0,0,0.08);
+    --section-title-color: #012456;
+    --section-subtitle-color: #6c757d;
+    --border-color: #e9ecef;
+    --muted-color: #6c757d;
+    --stat-number-color: #012456;
+    --workflow-label-color: #495057;
+    --workflow-tool-color: #6c757d;
+    --workflow-circle-bg: #e9ecef;
+    --workflow-circle-border: #dee2e6;
+    --workflow-circle-color: #6c757d;
+    --feature-banner-bg: #ffffff;
+    --section-alt-bg: #f4f6fa;
+    --section-border-color: #dee2e6;
+    --card-title-color: #212529;
+    --card-text-color: #495057;
+    --code-example-bg: #f0f4f8;
+}
+
+[data-theme="dark"] {
+    --light-bg: #1a1d2e;
+    --body-bg: #13162a;
+    --body-color: #e0e6f0;
+    --card-bg: #1e2235;
+    --card-shadow: rgba(0,0,0,0.3);
+    --section-title-color: #5BC2F5;
+    --section-subtitle-color: #adb5bd;
+    --border-color: rgba(255,255,255,0.08);
+    --muted-color: #adb5bd;
+    --stat-number-color: #5BC2F5;
+    --workflow-label-color: #d0d8e8;
+    --workflow-tool-color: #adb5bd;
+    --workflow-circle-bg: #2a2f4a;
+    --workflow-circle-border: #3a4060;
+    --workflow-circle-color: #adb5bd;
+    --feature-banner-bg: #1e2235;
+    --section-alt-bg: #1a1d2e;
+    --section-border-color: rgba(255,255,255,0.08);
+    --card-title-color: #e0e6f0;
+    --card-text-color: #adb5bd;
+    --code-example-bg: #1e2a3a;
+}
+
+/* ---------------------------------------------------------
+   Base
+   --------------------------------------------------------- */
+body {
+    font-family: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--body-bg);
+    color: var(--body-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---------------------------------------------------------
+   Navbar
+   --------------------------------------------------------- */
+.site-navbar {
+    background-color: var(--dark-bg);
+    transition: box-shadow 0.3s ease;
+}
+
+.site-navbar .navbar-brand {
+    gap: 12px;
+}
+
+.site-navbar.scrolled {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------------------------------------------------------
+   Layout
+   --------------------------------------------------------- */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1440px;
+    }
+}
+
+.py-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.section-light {
+    background: var(--light-bg);
+    border-top: 1px solid var(--section-border-color);
+}
+
+.section-alt {
+    background: var(--section-alt-bg);
+    border-top: 1px solid var(--section-border-color);
+}
+
+/* ---------------------------------------------------------
+   Hero
+   --------------------------------------------------------- */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-bg) 100%);
+    color: white;
+    padding: 120px 0 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+    background-size: 50px 50px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero-catchphrase {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #00bcf2;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.01em;
+}
+
+.hero .lead {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+/* ---------------------------------------------------------
+   Buttons
+   --------------------------------------------------------- */
+.btn-primary-custom {
+    background: var(--accent-color);
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.btn-primary-custom:hover {
+    background: var(--accent-color);
+}
+
+.btn-outline-custom {
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-outline-custom:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+.psgallery-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.psgallery-badge:hover {
+    color: white;
+    border-color: white;
+}
+
+.proof-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .proof-badge {
+    border-color: rgba(0, 0, 0, 0.18);
+    color: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.hero .proof-badge {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------------------------------------------------------
+   Feature Cards
+   --------------------------------------------------------- */
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.feature-card {
+    padding: 2rem;
+    height: 100%;
+    border-radius: 10px;
+    background: var(--card-bg);
+    box-shadow: 0 5px 15px var(--card-shadow);
+    border: 1px solid transparent !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px var(--card-shadow);
+    border-color: var(--accent-color) !important;
+}
+
+.feature-card p,
+.card-text {
+    font-size: 0.95rem;
+    font-weight: 300;
+}
+
+/* ---------------------------------------------------------
+   Use Case Cards
+   --------------------------------------------------------- */
+.usecase-card {
+    height: 100%;
+    border-radius: 10px;
+    background: var(--card-bg);
+    box-shadow: 0 5px 15px var(--card-shadow);
+    border: 1px solid transparent !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.usecase-card .card-body {
+    padding: 2rem 2.5rem;
+}
+
+.card.usecase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px var(--card-shadow);
+    border-color: var(--accent-color) !important;
+}
+
+/* ---------------------------------------------------------
+   Code Examples
+   --------------------------------------------------------- */
+.code-example {
+    background: var(--code-example-bg);
+    border: 1px solid rgba(0, 188, 242, 0.18);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.code-example::before {
+    content: 'PowerShell';
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Normalize Prism output — override any theme-specific sizing */
+.code-example pre {
+    margin: 0;
+    padding: 1rem 0 0 0;
+    background: transparent !important;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: auto;
+}
+
+.code-example code[class*="language-"] {
+    padding: 0;
+    background: transparent !important;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+[data-theme="light"] .code-example::before {
+    color: rgba(1, 36, 86, 0.45);
+}
+
+/* ---------------------------------------------------------
+   Section Titles
+   --------------------------------------------------------- */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--section-title-color);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.75rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--section-subtitle-color);
+    margin-bottom: 2rem;
+}
+
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
+footer {
+    background: var(--dark-bg);
+    color: white;
+    padding: 4rem 0 3rem;
+}
+
+footer .text-muted {
+    color: #adb5bd !important;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: var(--secondary-color);
+}
+
+/* ---------------------------------------------------------
+   Trust Strip
+   --------------------------------------------------------- */
+.trust-strip {
+    background: var(--light-bg);
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--section-border-color);
+    border-bottom: 1px solid var(--section-border-color);
+    transition: background-color 0.3s ease;
+}
+
+.trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    cursor: default;
+}
+
+.trust-item:hover {
+    background: var(--section-border-color);
+    transform: translateY(-2px);
+}
+
+.trust-item:hover i {
+    color: var(--secondary-color);
+}
+
+.trust-item i {
+    font-size: 1.6rem;
+    color: var(--accent-color);
+    transition: color 0.2s ease;
+}
+
+.trust-item span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--section-subtitle-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+}
+
+[data-theme="dark"] .trust-item span {
+    color: #c8d4e8;
+}
+
+/* ---------------------------------------------------------
+   Language Dropdown
+   --------------------------------------------------------- */
+.lang-group-start {
+    border-left: 1px solid rgba(255,255,255,0.25);
+    margin-left: 0.75rem;
+    padding-left: 0.75rem;
+}
+
+.lang-dropdown-toggle {
+    opacity: 0.75;
+    padding-left: 0.4rem !important;
+    padding-right: 0.4rem !important;
+}
+
+.lang-dropdown-toggle:hover {
+    opacity: 1;
+}
+
+/* Hide the default Bootstrap caret */
+.lang-dropdown-toggle::after {
+    display: none;
+}
+
+.lang-dropdown {
+    min-width: 130px;
+    font-size: 0.9rem;
+    /* Light mode — Bootstrap default, explicitly set for clarity */
+    --bs-dropdown-bg: #ffffff;
+    --bs-dropdown-color: #212529;
+    --bs-dropdown-link-color: #212529;
+    --bs-dropdown-link-hover-bg: #f0f4f8;
+    --bs-dropdown-link-hover-color: #212529;
+    --bs-dropdown-link-active-bg: #0d6efd;
+    --bs-dropdown-link-active-color: #ffffff;
+    --bs-dropdown-border-color: rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] .lang-dropdown {
+    --bs-dropdown-bg: #1e2a3a;
+    --bs-dropdown-color: #c8d4e8;
+    --bs-dropdown-link-color: #c8d4e8;
+    --bs-dropdown-link-hover-bg: #263245;
+    --bs-dropdown-link-hover-color: #ffffff;
+    --bs-dropdown-link-active-bg: #00bcf2;
+    --bs-dropdown-link-active-color: #ffffff;
+    --bs-dropdown-border-color: rgba(255,255,255,0.1);
+}
+
+/* ---------------------------------------------------------
+   Theme Toggle Button
+   --------------------------------------------------------- */
+#themeToggle {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-left: 0.75rem;
+}
+
+#themeToggle:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.7);
+}
+
+/* ---------------------------------------------------------
+   Workflow Steps
+   --------------------------------------------------------- */
+.workflow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 130px;
+}
+
+.workflow-step .step-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 2.1rem;
+    background: var(--workflow-circle-bg);
+    color: var(--workflow-circle-color);
+    border: 3px solid var(--workflow-circle-border);
+    transition: all 0.3s ease;
+}
+
+.workflow-step.active .step-circle {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+[data-theme="light"] .workflow-step.active .step-circle {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.workflow-step .step-label {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--workflow-label-color);
+    text-align: center;
+}
+
+.workflow-step .step-tool {
+    font-size: 0.95rem;
+    color: var(--workflow-tool-color);
+    text-align: center;
+}
+
+.workflow-step.active .step-label {
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .workflow-step.active .step-label {
+    color: var(--accent-color);
+}
+
+.workflow-step.active .step-tool {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.workflow-arrow {
+    color: #adb5bd;
+    font-size: 2rem;
+    padding-top: 26px;
+    margin: 0 2.5rem;
+}
+
+/* ---------------------------------------------------------
+   Workflow Footnote
+   --------------------------------------------------------- */
+.workflow-footnote {
+    font-size: 0.9rem;
+    color: var(--muted-color);
+}
+
+.workflow-note {
+    border-left: 3px solid var(--accent-color);
+    background: var(--section-alt-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+    color: var(--muted-color);
+    max-width: 700px;
+}
+
+.workflow-note a,
+.workflow-pill a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.workflow-note a:hover,
+.workflow-pill a:hover {
+    color: var(--secondary-color);
+}
+
+.workflow-pill {
+    display: inline-block;
+    border: 1px solid var(--section-border-color);
+    border-radius: 50px;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.875rem;
+    color: var(--muted-color);
+}
+
+/* ---------------------------------------------------------
+   Dark Mode Overrides (Bootstrap)
+   --------------------------------------------------------- */
+[data-theme="dark"] .card {
+    background-color: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--body-color);
+}
+
+[data-theme="dark"] .card-title {
+    color: var(--card-title-color);
+}
+
+[data-theme="dark"] .card-text {
+    color: var(--card-text-color);
+}
+
+[data-theme="dark"] .card-header {
+    border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .alert {
+    background-color: #1a2a3a;
+    border-color: #2a4a6a;
+    color: #9dd4f0;
+}
+
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: var(--card-title-color);
+}
+
+[data-theme="dark"] p {
+    color: var(--body-color);
+}
+
+[data-theme="dark"] .hero-catchphrase {
+    color: #00bcf2;
+}
+
+[data-theme="dark"] .text-muted {
+    color: var(--muted-color) !important;
+}
+
+[data-theme="dark"] hr {
+    border-color: var(--border-color);
+}
+
+/* ---------------------------------------------------------
+   Back to Top Button
+   --------------------------------------------------------- */
+#backToTop {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+#backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#backToTop:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------
+   Hero Code Window (PowerShell Terminal)
+   --------------------------------------------------------- */
+.hero-code-window {
+    border-radius: 6px;
+    overflow: hidden;
+    background: #012456;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
+    font-family: 'Consolas', 'Courier New', monospace;
+    margin-left: 2.5rem;
+    opacity: 0.45;
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+
+.hero-code-window:hover {
+    opacity: 0.9;
+}
+
+.hero-code-titlebar {
+    background: #1f1f1f;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    height: 32px;
+}
+
+.titlebar-icon {
+    color: #5BC2F5;
+    font-size: 0.85rem;
+    padding: 0 10px;
+    flex-shrink: 0;
+}
+
+.titlebar-label {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.78rem;
+    font-family: 'Segoe UI', sans-serif;
+    flex-grow: 1;
+}
+
+.titlebar-buttons {
+    display: flex;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.titlebar-btn {
+    width: 46px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.65rem;
+    cursor: default;
+    transition: background 0.15s;
+}
+
+.titlebar-btn:hover { background: rgba(255,255,255,0.1); }
+.titlebar-btn.btn-close-win:hover { background: #e81123; color: white; }
+
+.ps-prompt {
+    color: #ffff00;
+    font-size: 0.72rem;
+    padding: 0.9rem 1rem 0.3rem;
+    opacity: 0.9;
+}
+
+.hero-code-body {
+    padding: 0.5rem 1rem 1.5rem;
+    overflow: hidden;
+    background: #012456;
+}
+
+.hero-code-body pre[class*="language-"],
+.hero-code-body code[class*="language-"] {
+    font-size: 0.7rem;
+    line-height: 1.7;
+    background: transparent !important;
+    margin: 0;
+    padding: 0;
+    text-shadow: none;
+    white-space: pre !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    overflow: hidden;
+}
+
+/* Hero terminal always uses dark background — force Tomorrow theme token
+   colors regardless of the active Prism theme (light/dark toggle) */
+.hero-code-body .token.keyword,
+.hero-code-body .token.selector,
+.hero-code-body .token.builtin,
+.hero-code-body .token.important   { color: #cc99cd !important; }
+.hero-code-body .token.function,
+.hero-code-body .token.boolean,
+.hero-code-body .token.number      { color: #f08d49 !important; }
+.hero-code-body .token.string,
+.hero-code-body .token.variable,
+.hero-code-body .token.char        { color: #7ec699 !important; }
+.hero-code-body .token.operator,
+.hero-code-body .token.url,
+.hero-code-body .token.entity      { color: #67cdcc !important; background: transparent !important; }
+.hero-code-body .token.class-name,
+.hero-code-body .token.constant,
+.hero-code-body .token.property    { color: #f8c555 !important; }
+.hero-code-body .token.punctuation { color: #ccc    !important; }
+.hero-code-body .token.comment     { color: #999    !important; }
+.hero-code-body pre :not(.token)   { color: #ccc; }
+
+.hero-code-output {
+    font-family: 'Cascadia Code', Consolas, 'Courier New', monospace;
+    font-size: 0.7rem;
+    line-height: 1.7;
+    color: rgba(176, 210, 255, 0.45);
+    margin-top: 0.6rem;
+    white-space: pre;
+}
+
+.hero-code-output .out-success {
+    color: #3a9e5f;
+}
+
+/* ---------------------------------------------------------
+   Quick Start Stepper
+   --------------------------------------------------------- */
+.step-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.step-number.step-final {
+    background: var(--accent-color);
+}
+
+[data-theme="light"] .step-number:not(.step-final) {
+    background: var(--secondary-color);
+}
+
+.step-desc {
+    color: var(--muted-color);
+}
+
+.step-connector {
+    border-left: 2px dashed var(--section-border-color);
+    margin-left: 23px;
+    height: 1.5rem;
+}
+
+/* ---------------------------------------------------------
+   Copy Button
+   --------------------------------------------------------- */
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.5);
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    z-index: 1;
+}
+
+.copy-btn:hover {
+    background: rgba(255,255,255,0.18);
+    color: white;
+    border-color: rgba(255,255,255,0.4);
+}
+
+.copy-btn.copied {
+    background: rgba(0,188,242,0.2);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+[data-theme="light"] .copy-btn {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .copy-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.7);
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ---------------------------------------------------------
+   Hero Animation
+   --------------------------------------------------------- */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    animation: fadeSlideUp 0.6s ease both;
+    animation-delay: 0.05s;
+}
+
+.hero .lead {
+    animation: fadeSlideUp 0.6s ease both;
+    animation-delay: 0.2s;
+}
+
+.hero p.mb-4 {
+    animation: fadeSlideUp 0.6s ease both;
+    animation-delay: 0.35s;
+}
+
+.hero .d-flex.gap-3 {
+    animation: fadeSlideUp 0.6s ease both;
+    animation-delay: 0.5s;
+}
+
+.hero .col-lg-4 {
+    animation: fadeSlideUp 0.7s ease both;
+    animation-delay: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero h1,
+    .hero .lead,
+    .hero p.mb-4,
+    .hero .d-flex.gap-3,
+    .hero .col-lg-4 {
+        animation: none;
+    }
+}
+
+/* ---------------------------------------------------------
+   FAQ Accordion
+   --------------------------------------------------------- */
+.faq-item {
+    background: var(--card-bg) !important;
+    border-color: var(--section-border-color) !important;
+    margin-bottom: 0.5rem;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.faq-button {
+    background: var(--card-bg) !important;
+    color: var(--card-title-color) !important;
+    font-weight: 500;
+    box-shadow: none !important;
+}
+
+.faq-button:not(.collapsed) {
+    color: var(--accent-color) !important;
+    background: var(--card-bg) !important;
+}
+
+[data-theme="dark"] .faq-button::after {
+    filter: invert(1);
+}
+
+.faq-body {
+    background: var(--card-bg);
+    color: var(--card-text-color);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+}

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PSScriptBuilder – Dependency-Aware Script Builder for PowerShell">
+    <meta name="keywords" content="PowerShell, Script Builder, Dependency Resolution, Module Builder, Build Tool, OOP PowerShell">
+    <meta name="author" content="Tim Hartling">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PSScriptBuilder – Dependency-Aware Script Builder for PowerShell">
+    <meta property="og:description" content="Build single, deployable scripts from multi-file PowerShell projects — with automatic dependency resolution, topological sorting, and full support for classes, functions, and enums.">
+    <meta property="og:url" content="https://psscriptbuilder.com">
+    <meta property="og:image" content="https://psscriptbuilder.com/social-preview.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PSScriptBuilder – Dependency-Aware Script Builder for PowerShell">
+    <meta name="twitter:description" content="Build single, deployable scripts from multi-file PowerShell projects — with automatic dependency resolution and topological sorting.">
+    <meta name="twitter:image" content="https://psscriptbuilder.com/social-preview.png">
+    <link rel="canonical" href="https://psscriptbuilder.com/">
+    <link rel="alternate" hreflang="en" href="https://psscriptbuilder.com/">
+    <link rel="alternate" hreflang="de" href="https://psscriptbuilder.com/de/">
+    <link rel="icon" type="image/png" href="logo_64x64.png">
+    <title>PSScriptBuilder – Dependency-Aware Script Builder for PowerShell</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Prism.js for Syntax Highlighting -->
+    <link id="prism-theme" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <!-- Theme init: runs synchronously to prevent flash of unstyled content -->
+    <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.dataset.theme=t;if(t==='dark'){var el=document.getElementById('prism-theme');if(el)el.href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css';}}());</script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top site-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <img src="logo_64x64.png" alt="PSScriptBuilder" width="32" height="32" loading="eager">
+                <span><span style="color: #00bcf2;">PS</span>ScriptBuilder</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#quickstart">Quick Start</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#workflow">Workflow</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#usecases">Use Cases</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/PSScriptBuilder/PSScriptBuilder" target="_blank" rel="noopener">
+                        <i class="bi bi-github"></i> GitHub
+                    </a></li>
+                    <li class="nav-item lang-group-start dropdown">
+                        <a class="nav-link dropdown-toggle lang-dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Language">
+                            <i class="bi bi-globe2"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end lang-dropdown">
+                            <li><a class="dropdown-item active" href="">English</a></li>
+                            <li><a class="dropdown-item" href="de/">Deutsch</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="themeToggle" title="Toggle Light/Dark Mode" aria-label="Toggle Light/Dark Mode">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-7 pe-lg-5">
+                    <h1>PSScriptBuilder</h1>
+                    <p class="hero-catchphrase">Script building, evolved.</p>
+                    <p class="lead">Dependency-Aware Script Builder for PowerShell</p>
+                    <p class="mb-3">Build single, deployable scripts from multi-file PowerShell projects — classes, functions, and enums resolved in exactly the order they are needed.</p>
+                    <p class="mb-5">No manual sorting. No cryptic load errors. Just delegate it.</p>
+                    <div class="d-flex gap-3 flex-wrap align-items-center mb-3">
+                        <a href="#quickstart" class="btn btn-primary-custom">Get Started</a>
+                        <a href="https://github.com/PSScriptBuilder/PSScriptBuilder" target="_blank" rel="noopener" class="btn btn-outline-custom">
+                            <i class="bi bi-github me-1"></i> View on GitHub
+                        </a>
+                        <a href="https://www.powershellgallery.com/packages/PSScriptBuilder" target="_blank" rel="noopener" class="psgallery-badge">
+                            <i class="bi bi-box-seam"></i> PSGallery
+                        </a>
+                    </div>
+                    <p class="mt-3 mb-0">
+                        <span class="proof-badge">
+                            <i class="bi bi-check-circle"></i> Written in PowerShell — builds itself
+                        </span>
+                    </p>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="hero-code-window">
+                        <div class="hero-code-titlebar">
+                            <span class="titlebar-icon"><i class="bi bi-terminal-fill"></i></span>
+                            <span class="titlebar-label">PowerShell</span>
+                            <div class="titlebar-buttons">
+                                <span class="titlebar-btn">&#x2014;</span>
+                                <span class="titlebar-btn">&#x2610;</span>
+                                <span class="titlebar-btn btn-close-win">&#x2715;</span>
+                            </div>
+                        </div>
+                        <div class="ps-prompt">PS C:\Projects\MyModule&gt;</div>
+                        <div class="hero-code-body">
+                            <pre><code class="language-powershell">$contentCollector = New-PSScriptBuilderContentCollector |
+    Add-PSScriptBuilderCollector -Type Class -IncludePath "src/Classes" |
+    Add-PSScriptBuilderCollector -Type Function -IncludePath "src/Public"
+
+Invoke-PSScriptBuilderBuild `
+    -ContentCollector $contentCollector `
+    -TemplatePath "build/MyModule.psm1.template" `
+    -OutputPath   "build/Output/MyModule.psm1"</code></pre>
+                            <div class="hero-code-output">Collected   54 classes, 3 enums, 24 functions
+Graph       78 nodes connected by 179 edges
+Cycles      None detected
+Sorted      78 components
+Written     539,659 characters
+
+<span class="out-success">Build completed  &#x2713;</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <section class="trust-strip">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-6 col-sm-4 col-md-2 trust-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>PS 5.1 Compatible</span>
+                </div>
+                <div class="col-6 col-sm-4 col-md-2 trust-item">
+                    <i class="bi bi-diagram-3"></i>
+                    <span>Dependency Resolution</span>
+                </div>
+                <div class="col-6 col-sm-4 col-md-2 trust-item">
+                    <i class="bi bi-arrow-down-up"></i>
+                    <span>Topological Sorting</span>
+                </div>
+                <div class="col-6 col-sm-4 col-md-2 trust-item">
+                    <i class="bi bi-puzzle"></i>
+                    <span>Template System</span>
+                </div>
+                <div class="col-6 col-sm-4 col-md-2 trust-item">
+                    <i class="bi bi-tag"></i>
+                    <span>Release Management</span>
+                </div>
+                <div class="col-6 col-sm-4 col-md-2 trust-item">
+                    <i class="bi bi-shield-check"></i>
+                    <span>Build Validation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-section section-alt">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Why PSScriptBuilder?</h2>
+                <p class="section-subtitle">Everything you need to go from multi-file project to deployable script</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-diagram-3"></i>
+                        </div>
+                        <h4 class="card-title">Dependency Resolution</h4>
+                        <p>Automatically analyzes class-to-class, function-to-class, and cross-file dependencies using PowerShell AST parsing. Detects cycles early and provides clear error messages before your build fails.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-arrow-down-up"></i>
+                        </div>
+                        <h4 class="card-title">Topological Sorting</h4>
+                        <p>Guarantees correct loading order using a proven topological sort algorithm. Base classes always load before derived classes, regardless of file order — no more manual sorting of source files.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-puzzle"></i>
+                        </div>
+                        <h4 class="card-title">Flexible Templates</h4>
+                        <p>Define your output structure once using a template with token placeholders. PSScriptBuilder replaces tokens with correctly ordered, resolved content — full control over the final script layout.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-collection"></i>
+                        </div>
+                        <h4 class="card-title">Multiple Collectors</h4>
+                        <p>Dedicated collectors for Classes, Functions, Enums, Using statements, and raw Files. Each collector is independently configurable with custom include paths, file filters, and collection keys.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-tag"></i>
+                        </div>
+                        <h4 class="card-title">Release Management</h4>
+                        <p>Built-in SemVer version bumping (Major/Minor/Patch), automatic file updates across your project, build number tracking, and Git information extraction for release metadata.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h4 class="card-title">Build Validation</h4>
+                        <p>Catches configuration errors before the build starts. Validates template syntax, placeholder completeness, and collector configuration — then logs every step with full verbose support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section id="quickstart" class="py-section section-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Quick Start</h2>
+                <p class="section-subtitle">Get up and running in minutes</p>
+            </div>
+
+            <div class="col-lg-10 mx-auto">
+
+                <!-- Step 1 -->
+                <div class="d-flex gap-4 mb-5">
+                    <div class="flex-shrink-0">
+                        <div class="step-number">1</div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h4 class="mb-1">Install and Import the Module</h4>
+                        <p class="mb-3 step-desc">Install PSScriptBuilder from the PowerShell Gallery. Use <code>using module</code> in your build script — it makes PowerShell classes and enums available at parse time.</p>
+                        <div class="code-example">
+                            <pre><code class="language-powershell">Install-Module -Name PSScriptBuilder
+using module PSScriptBuilder</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-connector"></div>
+
+                <!-- Step 2 -->
+                <div class="d-flex gap-4 mb-5">
+                    <div class="flex-shrink-0">
+                        <div class="step-number">2</div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h4 class="mb-1">Configure Collectors</h4>
+                        <p class="mb-3 step-desc">Create a content collector and attach specialized collectors for each source type. The pipeline syntax keeps configuration readable and composable.</p>
+                        <div class="code-example">
+                            <pre><code class="language-powershell">$contentCollector = New-PSScriptBuilderContentCollector |
+    Add-PSScriptBuilderCollector -Type Class    -IncludePath "src/Classes" |
+    Add-PSScriptBuilderCollector -Type Function -IncludePath "src/Public"</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-connector"></div>
+
+                <!-- Step 3 -->
+                <div class="d-flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="step-number step-final">3</div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h4 class="mb-1">Build</h4>
+                        <p class="mb-3 step-desc">Run the build. PSScriptBuilder collects all sources, resolves dependencies, and writes the final output file using your template.</p>
+                        <div class="code-example">
+                            <pre><code class="language-powershell">Invoke-PSScriptBuilderBuild `
+    -ContentCollector $contentCollector `
+    -TemplatePath "build/MyModule.psm1.template" `
+    -OutputPath   "build/Output/MyModule.psm1"</code></pre>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="workflow" class="py-section section-alt">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Typical Workflow</h2>
+                <p class="section-subtitle">How PSScriptBuilder fits into your PowerShell development pipeline</p>
+            </div>
+            <div class="d-flex align-items-start flex-wrap justify-content-center">
+
+                <div class="workflow-step">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Develop</div>
+                    <div class="step-tool">Your Editor</div>
+                </div>
+
+                <div class="workflow-arrow"><i class="bi bi-arrow-right"></i></div>
+
+                <div class="workflow-step active">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Build</div>
+                    <div class="step-tool">PSScriptBuilder</div>
+                </div>
+
+                <div class="workflow-arrow"><i class="bi bi-arrow-right"></i></div>
+
+                <div class="workflow-step">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Test</div>
+                    <div class="step-tool">Pester</div>
+                </div>
+
+                <div class="workflow-arrow"><i class="bi bi-arrow-right"></i></div>
+
+                <div class="workflow-step">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Publish</div>
+                    <div class="step-tool">Publish-Module</div>
+                </div>
+
+            </div>
+            <div class="text-center mt-5">
+                <span class="workflow-pill">
+                    <i class="bi bi-puzzle me-2"></i>Focused on script building — pairs well with <a href="https://github.com/psake/psake" target="_blank" rel="noopener">psake</a> or <a href="https://github.com/nightroman/Invoke-Build" target="_blank" rel="noopener">InvokeBuild</a>.
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="usecases" class="py-section section-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Use Cases</h2>
+                <p class="section-subtitle">Recognize your situation? PSScriptBuilder was built for exactly this.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card usecase-card">
+                        <div class="card-body">
+                            <div class="mb-3" style="font-size: 2rem;"><i class="bi bi-file-earmark-code text-primary"></i></div>
+                            <h4 class="card-title">Standalone Scripts</h4>
+                            <p class="card-text">You write clean, organized source files — but deployment needs a single script. Configure once, then build with a single command. All dependencies resolved, correct order guaranteed.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card usecase-card">
+                        <div class="card-body">
+                            <div class="mb-3" style="font-size: 2rem;"><i class="bi bi-diagram-3 text-primary"></i></div>
+                            <h4 class="card-title">Object-Oriented PowerShell</h4>
+                            <p class="card-text">Your class hierarchy is growing and the loading order keeps breaking. PSScriptBuilder uses PowerShell's AST to resolve every dependency automatically — no more manual sorting, no more guesswork.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card usecase-card">
+                        <div class="card-body">
+                            <div class="mb-3" style="font-size: 2rem;"><i class="bi bi-rocket-takeoff text-primary"></i></div>
+                            <h4 class="card-title">Structured Releases</h4>
+                            <p class="card-text">Bumping versions across multiple files before every release is tedious and error-prone. Define your output structure once with a template, and let PSScriptBuilder handle version bumping, file updates, and Git metadata automatically.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card usecase-card">
+                        <div class="card-body">
+                            <div class="mb-3" style="font-size: 2rem;"><i class="bi bi-gear text-primary"></i></div>
+                            <h4 class="card-title">CI/CD Pipelines</h4>
+                            <p class="card-text">Automate your PowerShell build as part of any CI/CD pipeline. PSScriptBuilder produces a deterministic, dependency-resolved output on every run — no manual steps, no surprises.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-section section-alt">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Common questions about PSScriptBuilder</p>
+            </div>
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="faqAccordion">
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                                Does PSScriptBuilder work with PowerShell 7?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body faq-body">
+                                Yes. PSScriptBuilder is fully compatible with both PowerShell 5.1 and PowerShell 7+. The built scripts target PS 5.1 as the lowest common denominator, but the build tooling itself runs on both.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                What's the difference between PSScriptBuilder and psake or Invoke-Build?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body faq-body">
+                                psake and Invoke-Build are general-purpose task runners — they orchestrate your entire build pipeline. PSScriptBuilder solves one specific problem: combining a multi-file PowerShell project into a single, correctly ordered script. They complement each other well — use Invoke-Build to run your pipeline and PSScriptBuilder as one step inside it.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                How are circular dependencies handled?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body faq-body">
+                                PSScriptBuilder detects circular dependencies during the analysis phase — before any output is written. It throws a clear error that identifies the cycle so you can resolve it in your source code. The build fails fast rather than producing a broken script silently.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                                Do I need to register every source file manually?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body faq-body">
+                                No. You point each collector at a directory and it picks up all matching files automatically. You can optionally filter by file pattern or recursion depth, but there is no need to list individual files. New files added to the folder are included on the next build automatically.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                                Can I use PSScriptBuilder in a CI/CD pipeline?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body faq-body">
+                                Absolutely. PSScriptBuilder produces deterministic output — the same inputs always produce the same script. There are no interactive prompts and all configuration is driven by code. It runs on any Windows agent with PowerShell 5.1+ and requires no dependencies beyond the module itself.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                                Is PSScriptBuilder battle-tested?
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body faq-body">
+                                Yes. PSScriptBuilder is written entirely in PowerShell and builds itself. It manages 80+ source files with complex class dependencies and resolves the correct build order automatically — with the same cmdlets and mechanisms you can use in your own projects.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-12 col-md-5">
+                    <h4 class="mb-2"><span style="color: #00bcf2;">PS</span>ScriptBuilder</h4>
+                    <p class="text-muted mb-2">PSScriptBuilder analyzes your source files, resolves dependencies, and produces a single, deployable script.</p>
+                    <p class="text-muted mb-0">Many files. One script. Done.</p>
+                    <hr class="my-3" style="border-color: rgba(255,255,255,0.1);">
+                    <p class="text-muted mb-0 small">&copy; 2026 Tim Hartling &ensp;&middot;&ensp; MIT License &ensp;&middot;&ensp; <a href="https://github.com/PSScriptBuilder/PSScriptBuilder" target="_blank" rel="noopener" class="text-muted"><i class="bi bi-github me-1"></i>GitHub</a></p>
+                </div>
+                <div class="col-6 col-md-3 offset-md-1">
+                    <h6 class="mb-3">Project</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="https://github.com/PSScriptBuilder/PSScriptBuilder/releases" target="_blank" rel="noopener">Releases</a></li>
+                        <li><a href="https://github.com/PSScriptBuilder/PSScriptBuilder/issues" target="_blank" rel="noopener">Report Issues</a></li>
+                        <li><a href="https://github.com/PSScriptBuilder/PSScriptBuilder/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+                        <li><a href="https://github.com/PSScriptBuilder/PSScriptBuilder/blob/main/LICENSE" target="_blank" rel="noopener">License</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h6 class="mb-3">Resources</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="https://github.com/PSScriptBuilder/PSScriptBuilder/tree/main/examples" target="_blank" rel="noopener">Examples</a></li>
+                        <li><a href="https://docs.psscriptbuilder.com" target="_blank" rel="noopener">Documentation</a></li>
+                        <li><a href="https://github.com/PSScriptBuilder/PSScriptBuilder/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Prism.js for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-powershell.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/site.js" defer></script>
+
+    <!-- Back to Top -->
+    <button id="backToTop" title="Back to top" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+</body>
+</html>
