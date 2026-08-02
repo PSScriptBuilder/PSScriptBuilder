@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#012456"/>
+      <stop offset="100%" stop-color="#001a3a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Terminal window frame -->
+  <rect x="5" y="5" width="246" height="246" fill="url(#bg)" stroke="#0D5AA7" stroke-width="8"/>
+
+  <!-- PS> prompt -->
+  <text x="18" y="48" font-family="'Consolas','Courier New',monospace" font-size="40"
+        fill="#1577C0" opacity="0.9">PS&gt;</text>
+
+  <!-- Source document stack (left) -->
+  <!-- Back doc -->
+  <rect x="24" y="115" width="72" height="96" rx="6" fill="#00A4EF" opacity="0.22"/>
+  <!-- Mid doc -->
+  <rect x="34" y="125" width="72" height="96" rx="6" fill="#00A4EF" opacity="0.45"/>
+  <!-- Front doc with dog-ear -->
+  <polygon points="44,135 104,135 116,147 116,231 44,231" fill="#6E9DBF"/>
+  <polygon points="104,135 116,147 104,147" fill="#4E85AB"/>
+  <!-- Lines on front doc -->
+  <line x1="54" y1="163" x2="106" y2="163" stroke="#0072C6" stroke-width="5" stroke-linecap="round"/>
+  <line x1="54" y1="181" x2="92"  y2="181" stroke="#0072C6" stroke-width="5" stroke-linecap="round"/>
+  <line x1="54" y1="199" x2="100" y2="199" stroke="#0072C6" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Output document — dog-ear -->
+  <polygon points="136,101 214,101 230,117 230,231 136,231" fill="#C8DDEF" fill-opacity="0.75" stroke="#0072C6" stroke-width="3"/>
+  <!-- Dog-ear fold -->
+  <polygon points="214,101 230,117 214,117" fill="#A0BEDB"/>
+
+  <!-- Code lines inside output document -->
+  <line x1="152" y1="132" x2="210" y2="132" stroke="#0072C6" stroke-width="6" stroke-linecap="round"/>
+  <line x1="152" y1="152" x2="192" y2="152" stroke="#0072C6" stroke-width="6" stroke-linecap="round"/>
+  <line x1="152" y1="172" x2="202" y2="172" stroke="#0072C6" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <line x1="152" y1="192" x2="185" y2="192" stroke="#0072C6" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+  <line x1="152" y1="212" x2="172" y2="212" stroke="#0072C6" stroke-width="6" stroke-linecap="round" opacity="0.25"/>
+
+</svg>

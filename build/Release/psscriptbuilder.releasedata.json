@@ -1,0 +1,28 @@
+﻿{
+    "version":  {
+                    "major":  1,
+                    "minor":  2,
+                    "patch":  0,
+                    "prerelease":  "",
+                    "buildmetadata":  "",
+                    "full":  "1.2.0"
+                },
+    "build":  {
+                  "number":  32,
+                  "date":  "2026-08-02",
+                  "time":  "15:19:45",
+                  "timestamp":  "2026-08-02T15:19:45Z",
+                  "year":  2026,
+                  "month":  8,
+                  "day":  2,
+                  "hour":  15,
+                  "minute":  19,
+                  "second":  45
+              },
+    "git":  {
+                "commit":  "48c6c42df37aa580332fbc68bf497490a754bf30",
+                "commitShort":  "48c6c42",
+                "branch":  "main",
+                "tag":  "v1.1.0"
+            }
+}

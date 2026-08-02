@@ -1,0 +1,2 @@
+class BrokenClass {
+    [void] DoWork() {

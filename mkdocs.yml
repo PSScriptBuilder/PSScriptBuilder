@@ -1,0 +1,154 @@
+site_name: PSScriptBuilder Docs
+site_url: https://docs.psscriptbuilder.com
+site_description: A dependency-aware script builder for PowerShell. Combines multi-file projects into a single deployable script with automatic dependency resolution and topological sorting.
+site_author: PSScriptBuilder
+copyright: Copyright &copy; 2026 Tim Hartling
+
+repo_url: https://github.com/PSScriptBuilder/PSScriptBuilder
+repo_name: PSScriptBuilder/PSScriptBuilder
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  font:
+    text: Source Sans 3
+    code: Source Code Pro
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/PSScriptBuilder/PSScriptBuilder
+      name: GitHub
+    - icon: fontawesome/solid/box
+      link: https://www.powershellgallery.com/packages/PSScriptBuilder
+      name: PowerShell Gallery
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/external-links.js
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - getting-started/index.md
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quick-start.md
+  - Tutorials:
+    - tutorials/index.md
+    - Building Your First Project: tutorials/building-your-first-project.md
+    - Migrating to PSScriptBuilder: tutorials/migrating-to-psscriptbuilder.md
+    - Setting Up Release Management: tutorials/setting-up-release-management.md
+  - Guides:
+    - guides/index.md
+    - Building:
+      - Configuration: guides/configuration.md
+      - Collectors: guides/collectors.md
+      - Templates: guides/templates.md
+      - Build Pipeline: guides/build-pipeline.md
+      - Tool Integrations: guides/tool-integrations.md
+    - Analysis:
+      - Dependency Analysis: guides/dependency-analysis.md
+      - Code Analysis: guides/code-analysis.md
+    - Publishing:
+      - Release Management: guides/release-management.md
+      - CI/CD Integration: guides/cicd-integration.md
+  - Cmdlet Reference:
+    - cmdlets/index.md
+    - Scaffolding:
+      - New-PSScriptBuilderProject: cmdlets/New-PSScriptBuilderProject.md
+      - New-PSScriptBuilderTemplate: cmdlets/New-PSScriptBuilderTemplate.md
+    - Script Building:
+      - New-PSScriptBuilderContentCollector: cmdlets/New-PSScriptBuilderContentCollector.md
+      - New-PSScriptBuilderCollector: cmdlets/New-PSScriptBuilderCollector.md
+      - Add-PSScriptBuilderCollector: cmdlets/Add-PSScriptBuilderCollector.md
+      - Get-PSScriptBuilderCollector: cmdlets/Get-PSScriptBuilderCollector.md
+      - Get-PSScriptBuilderCollectorContent: cmdlets/Get-PSScriptBuilderCollectorContent.md
+      - Remove-PSScriptBuilderCollector: cmdlets/Remove-PSScriptBuilderCollector.md
+      - Invoke-PSScriptBuilderBuild: cmdlets/Invoke-PSScriptBuilderBuild.md
+      - Watch-PSScriptBuilderProject: cmdlets/Watch-PSScriptBuilderProject.md
+      - Format-PSScriptBuilderBuildResult: cmdlets/Format-PSScriptBuilderBuildResult.md
+      - Export-PSScriptBuilderBuildResult: cmdlets/Export-PSScriptBuilderBuildResult.md
+      - Compress-PSScriptBuilderScript: cmdlets/Compress-PSScriptBuilderScript.md
+    - Analysis & Validation:
+      - Get-PSScriptBuilderDependencyAnalysis: cmdlets/Get-PSScriptBuilderDependencyAnalysis.md
+      - Get-PSScriptBuilderComponentDependency: cmdlets/Get-PSScriptBuilderComponentDependency.md
+      - Find-PSScriptBuilderUnusedComponent: cmdlets/Find-PSScriptBuilderUnusedComponent.md
+      - ConvertTo-PSScriptBuilderComponentDependencyTree: cmdlets/ConvertTo-PSScriptBuilderComponentDependencyTree.md
+      - Export-PSScriptBuilderDependencyGraph: cmdlets/Export-PSScriptBuilderDependencyGraph.md
+      - Get-PSScriptBuilderTemplateAnalysis: cmdlets/Get-PSScriptBuilderTemplateAnalysis.md
+      - Test-PSScriptBuilderTemplate: cmdlets/Test-PSScriptBuilderTemplate.md
+    - Configuration:
+      - Get-PSScriptBuilderConfiguration: cmdlets/Get-PSScriptBuilderConfiguration.md
+      - New-PSScriptBuilderConfiguration: cmdlets/New-PSScriptBuilderConfiguration.md
+      - Set-PSScriptBuilderProjectRoot: cmdlets/Set-PSScriptBuilderProjectRoot.md
+    - Release Management:
+      - New-PSScriptBuilderReleaseData: cmdlets/New-PSScriptBuilderReleaseData.md
+      - Get-PSScriptBuilderReleaseData: cmdlets/Get-PSScriptBuilderReleaseData.md
+      - Get-PSScriptBuilderReleaseDataTokens: cmdlets/Get-PSScriptBuilderReleaseDataTokens.md
+      - Test-PSScriptBuilderReleaseData: cmdlets/Test-PSScriptBuilderReleaseData.md
+      - Update-PSScriptBuilderReleaseData: cmdlets/Update-PSScriptBuilderReleaseData.md
+      - Format-PSScriptBuilderReleaseDataResult: cmdlets/Format-PSScriptBuilderReleaseDataResult.md
+      - Get-PSScriptBuilderBumpConfiguration: cmdlets/Get-PSScriptBuilderBumpConfiguration.md
+      - Test-PSScriptBuilderBumpConfiguration: cmdlets/Test-PSScriptBuilderBumpConfiguration.md
+      - Update-PSScriptBuilderBumpFiles: cmdlets/Update-PSScriptBuilderBumpFiles.md
+      - Format-PSScriptBuilderBumpResult: cmdlets/Format-PSScriptBuilderBumpResult.md
+  - Examples: examples.md
+  - Troubleshooting: troubleshooting.md

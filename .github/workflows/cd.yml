@@ -1,0 +1,49 @@
+name: CD
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  analyze:
+    uses: ./.github/workflows/analyze.yml
+
+  test:
+    needs: analyze
+    uses: ./.github/workflows/test.yml
+
+  publish-to-psgallery:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Publish to PSGallery
+        env:
+          PSGALLERY_API_KEY: ${{ secrets.PSGALLERY_API_KEY }}
+        shell: pwsh
+        run: ./scripts/publish.ps1 -PSGallery
+
+  create-release:
+    needs: publish-to-psgallery
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract release notes from CHANGELOG.md
+        shell: pwsh
+        run: ./scripts/extract-release-notes.ps1 -Tag '${{ github.ref_name }}'
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ github.ref_name }}"
+          gh release create "$TAG" \
+            --title "$TAG" \
+            --notes-file release_notes.md
