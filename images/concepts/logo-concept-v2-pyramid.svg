@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#012456"/>
+      <stop offset="100%" stop-color="#001a3a"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#0D5AA7" opacity="0.1"/>
+    </pattern>
+    <marker id="arr-blue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#3A96DD"/>
+    </marker>
+    <marker id="arr-teal" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#4EC9B0"/>
+    </marker>
+    <marker id="arr-gold" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#DCDCAA"/>
+    </marker>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#DCDCAA" flood-opacity="0.5" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect x="5" y="5" width="246" height="246" rx="14" fill="url(#bg)" stroke="#0D5AA7" stroke-width="10"/>
+  <rect x="10" y="10" width="236" height="236" fill="url(#dots)"/>
+
+  <!-- Arrows (drawn before boxes so box fills cover the endpoints) -->
+  <line x1="67" y1="77" x2="83" y2="99" stroke="#3A96DD" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+  <line x1="189" y1="77" x2="173" y2="99" stroke="#4EC9B0" stroke-width="1.5" marker-end="url(#arr-teal)"/>
+  <line x1="128" y1="145" x2="128" y2="167" stroke="#DCDCAA" stroke-width="1.5" marker-end="url(#arr-gold)"/>
+
+  <!-- Row 1: enum Status -->
+  <rect x="26" y="35" width="82" height="40" rx="4" fill="#0D3670" stroke="#3A96DD" stroke-width="1.5"/>
+  <text x="32" y="49" font-family="'Consolas','Courier New',monospace" font-size="10" fill="#3A96DD">enum</text>
+  <text x="67" y="61" font-family="'Consolas','Courier New',monospace" font-size="13" fill="#C8DDEF" text-anchor="middle" dominant-baseline="central">Status</text>
+
+  <!-- Row 1: class Logger -->
+  <rect x="148" y="35" width="82" height="40" rx="4" fill="#0D3670" stroke="#4EC9B0" stroke-width="1.5"/>
+  <text x="154" y="49" font-family="'Consolas','Courier New',monospace" font-size="10" fill="#4EC9B0">class</text>
+  <text x="189" y="61" font-family="'Consolas','Courier New',monospace" font-size="13" fill="#C8DDEF" text-anchor="middle" dominant-baseline="central">Logger</text>
+
+  <!-- Row 2: function Get-Log -->
+  <rect x="78" y="103" width="100" height="40" rx="4" fill="#0D3670" stroke="#DCDCAA" stroke-width="1.5"/>
+  <text x="84" y="117" font-family="'Consolas','Courier New',monospace" font-size="10" fill="#DCDCAA">function</text>
+  <text x="128" y="129" font-family="'Consolas','Courier New',monospace" font-size="13" fill="#C8DDEF" text-anchor="middle" dominant-baseline="central">Get-Log</text>
+
+  <!-- Row 3: Script.ps1 output -->
+  <rect x="56" y="171" width="144" height="50" rx="4" fill="#1E4D8C" stroke="#DCDCAA" stroke-width="2" filter="url(#glow)"/>
+  <text x="63" y="185" font-family="'Consolas','Courier New',monospace" font-size="11" fill="#3A96DD">PS&gt;</text>
+  <text x="128" y="196" font-family="'Consolas','Courier New',monospace" font-size="15" fill="#DCDCAA" text-anchor="middle" dominant-baseline="central">Script.ps1</text>
+</svg>

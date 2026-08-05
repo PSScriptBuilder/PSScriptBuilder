@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#012456"/>
+      <stop offset="100%" stop-color="#001333"/>
+    </linearGradient>
+    <linearGradient id="icon-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#012456"/>
+      <stop offset="100%" stop-color="#001a3a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="420" fill="url(#bg)"/>
+
+  <!-- Dot grid texture -->
+  <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="#0D5AA7" opacity="0.1"/>
+  </pattern>
+  <rect width="1000" height="420" fill="url(#dots)"/>
+
+  <!-- === LEFT COLUMN === -->
+
+  <!-- Logo 107x107 — flat group (no nested svg) -->
+  <g transform="translate(60,47) scale(0.418)">
+    <!-- Terminal window frame -->
+    <rect x="5" y="5" width="246" height="246" fill="url(#icon-bg)" stroke="#0D5AA7" stroke-width="8"/>
+    <!-- PS> prompt -->
+    <text x="18" y="48" font-family="'Consolas','Courier New',monospace" font-size="40" fill="#1577C0" opacity="0.9">PS&gt;</text>
+    <!-- Source document stack (left) -->
+    <!-- Back doc -->
+    <rect x="24" y="115" width="72" height="96" rx="6" fill="#00A4EF" opacity="0.22"/>
+    <!-- Mid doc -->
+    <rect x="34" y="125" width="72" height="96" rx="6" fill="#00A4EF" opacity="0.45"/>
+    <!-- Front doc with dog-ear -->
+    <polygon points="44,135 104,135 116,147 116,231 44,231" fill="#6E9DBF"/>
+    <polygon points="104,135 116,147 104,147" fill="#4E85AB"/>
+    <!-- Lines on front doc -->
+    <line x1="54" y1="163" x2="106" y2="163" stroke="#0072C6" stroke-width="5" stroke-linecap="round"/>
+    <line x1="54" y1="181" x2="92"  y2="181" stroke="#0072C6" stroke-width="5" stroke-linecap="round"/>
+    <line x1="54" y1="199" x2="100" y2="199" stroke="#0072C6" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+    <!-- Output document — dog-ear -->
+    <polygon points="136,101 214,101 230,117 230,231 136,231" fill="#C8DDEF" fill-opacity="0.75" stroke="#0072C6" stroke-width="3"/>
+    <!-- Dog-ear fold -->
+    <polygon points="214,101 230,117 214,117" fill="#A0BEDB"/>
+    <!-- Code lines inside output document -->
+    <line x1="152" y1="132" x2="210" y2="132" stroke="#0072C6" stroke-width="6" stroke-linecap="round"/>
+    <line x1="152" y1="152" x2="192" y2="152" stroke="#0072C6" stroke-width="6" stroke-linecap="round"/>
+    <line x1="152" y1="172" x2="202" y2="172" stroke="#0072C6" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+    <line x1="152" y1="192" x2="185" y2="192" stroke="#0072C6" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+    <line x1="152" y1="212" x2="172" y2="212" stroke="#0072C6" stroke-width="6" stroke-linecap="round" opacity="0.25"/>
+  </g>
+
+  <!-- Title -->
+  <text x="189" y="96" font-family="Segoe UI, system-ui, sans-serif" font-size="56" font-weight="700" fill="#ffffff" letter-spacing="1">PSScriptBuilder</text>
+
+  <!-- Tagline -->
+  <text x="191" y="138" font-family="Segoe UI, system-ui, sans-serif" font-size="22" fill="#DCDCAA">Script building, evolved.</text>
+
+  <!-- Separator line -->
+  <rect x="60" y="178" width="600" height="1" fill="#0D5AA7" opacity="0.3" rx="1"/>
+
+  <!-- Subtitle -->
+  <text x="60" y="218" font-family="Segoe UI, system-ui, sans-serif" font-size="22" font-weight="600" fill="#3A96DD">Dependency-Aware Script Builder for PowerShell</text>
+
+  <!-- Description -->
+  <text x="60" y="265" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#a0aab4">Compile multi-file PowerShell projects into a single deployable script &#x2014;</text>
+  <text x="60" y="292" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#a0aab4">with AST analysis, dependency resolution, topological sorting,</text>
+  <text x="60" y="319" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#a0aab4">and release management.</text>
+
+  <!-- Footer -->
+  <line x1="60" y1="354" x2="940" y2="354" stroke="#1A6FBF" stroke-width="1" opacity="0.35"/>
+  <text x="60"  y="373" font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#3A96DD" font-weight="600">docs.psscriptbuilder.com</text>
+  <text x="940" y="373" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#6a8fa8" text-anchor="end">github.com/PSScriptBuilder &#xB7; PSGallery &#xB7; MIT License</text>
+
+  <!-- === VERTICAL DIVIDER === -->
+  <line x1="670" y1="40" x2="670" y2="340" stroke="#1A6FBF" stroke-width="1" opacity="0.35"/>
+
+  <!-- === RIGHT COLUMN — Feature list === -->
+  <!-- Header -->
+  <text x="700" y="83" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#6a8fa8" letter-spacing="2">FEATURES</text>
+
+  <!-- Feature items -->
+  <circle cx="712" cy="113" r="5" fill="#3A96DD"/>
+  <text x="730" y="118" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">AST Analysis</text>
+
+  <circle cx="712" cy="145" r="5" fill="#3A96DD"/>
+  <text x="730" y="150" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">Dependency Resolution</text>
+
+  <circle cx="712" cy="177" r="5" fill="#3A96DD"/>
+  <text x="730" y="182" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">Topological Sort</text>
+
+  <circle cx="712" cy="209" r="5" fill="#3A96DD"/>
+  <text x="730" y="214" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">Cycle Detection</text>
+
+  <circle cx="712" cy="241" r="5" fill="#3A96DD"/>
+  <text x="730" y="246" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">Template Engine</text>
+
+  <circle cx="712" cy="273" r="5" fill="#3A96DD"/>
+  <text x="730" y="278" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">Release Management</text>
+
+  <circle cx="712" cy="305" r="5" fill="#3A96DD"/>
+  <text x="730" y="310" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#9FB8CC">PS 5.1 Compatible</text>
+
+</svg>

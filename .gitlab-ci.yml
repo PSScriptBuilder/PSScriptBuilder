@@ -1,0 +1,106 @@
+# You can override the included template(s) by including variable overrides
+# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
+# Secret Detection customization: https://docs.gitlab.com/user/application_security/secret_detection/pipeline/configure
+# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
+# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
+# Note that environment variables can be set in several places
+# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
+stages:
+- test
+- secret-detection
+- mirror
+- deploy
+variables:
+  SECRET_DETECTION_ENABLED: 'true'
+
+include:
+- template: Security/Secret-Detection.gitlab-ci.yml
+
+# Run Pester tests on every push to main and on version tags (e.g. v1.0.0).
+# Tests must pass before the mirror stage runs.
+pester-tests:
+  stage: test
+  image: mcr.microsoft.com/powershell:lts
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/
+  script:
+    - pwsh -Command "Install-Module -Name Pester -MinimumVersion 5.0 -Force -SkipPublisherCheck"
+    - pwsh -File tests/Invoke-Tests.ps1 -Suite All
+
+secret_detection:
+  stage: secret-detection
+
+# Push the current state to the GitHub mirror on every merge to main,
+# and push a tagged release commit on version tags (e.g. v1.0.0).
+# Creates an orphan branch (no commit history) and force-pushes it.
+# GitHub will always show exactly one commit per merge, or a release commit per tag.
+mirror-to-github:
+  stage: mirror
+  image: bitnami/git:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/
+  script:
+    - git config user.email "ci@psscriptbuilder.com"
+    - git config user.name "PSScriptBuilder CI"
+    - git remote add github https://x-access-token:${GITHUB_TOKEN}@github.com/PSScriptBuilder/PSScriptBuilder.git
+    - |
+      if [ -z "$CI_COMMIT_TAG" ]; then
+        git fetch origin --tags --quiet
+        RELEASE_TAG=$(git tag --points-at HEAD | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1 || true)
+        if [ -n "$RELEASE_TAG" ]; then
+          echo "Deferring to tag pipeline ($RELEASE_TAG)"
+          exit 0
+        fi
+      fi
+      if [ -n "$CI_COMMIT_TAG" ]; then
+        COMMIT_MSG="Release $CI_COMMIT_TAG"
+      else
+        COMMIT_MSG="Latest"
+      fi
+      git checkout --orphan mirror-snapshot
+      git add -A
+      git commit -m "$COMMIT_MSG"
+      git push github mirror-snapshot:main --force
+      if [ -n "$CI_COMMIT_TAG" ]; then
+        git tag -f $CI_COMMIT_TAG
+        git push github $CI_COMMIT_TAG --force
+      fi
+
+# Trigger documentation deployment when docs/** or mkdocs.yml has changed.
+# Runs after mirror-to-github to ensure GitHub has the latest code before deploying.
+trigger-github-docs:
+  stage: deploy
+  image: bitnami/git:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      changes:
+        - docs/**
+        - mkdocs.yml
+  script:
+    - |
+      curl --fail -X POST \
+        -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+        -H "Accept: application/vnd.github+json" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        https://api.github.com/repos/PSScriptBuilder/PSScriptBuilder/actions/workflows/deploy-docs.yml/dispatches \
+        -d '{"ref":"main"}'
+
+# Trigger GitHub Pages deployment when website/** has changed.
+# Runs after mirror-to-github to ensure GitHub has the latest code before deploying.
+trigger-github-pages:
+  stage: deploy
+  image: bitnami/git:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      changes:
+        - website/**
+  script:
+    - |
+      curl --fail -X POST \
+        -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+        -H "Accept: application/vnd.github+json" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        https://api.github.com/repos/PSScriptBuilder/PSScriptBuilder/actions/workflows/deploy-pages.yml/dispatches \
+        -d '{"ref":"main"}'

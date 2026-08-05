@@ -1,0 +1,9 @@
+gl-secret-detection-report.json
+build/LocalFeed/
+build/*.buildresult.json
+examples/**/build/Output/
+examples/**/output.ps1
+examples/**/output.ps1.*.bak
+
+# Private local documents — not for publication
+.private/

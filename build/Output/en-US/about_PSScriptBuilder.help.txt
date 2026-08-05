@@ -1,0 +1,58 @@
+TOPIC
+    about_PSScriptBuilder
+
+SHORT DESCRIPTION
+    A dependency-aware PowerShell script builder that combines multi-file
+    projects into a single, deployable script.
+
+LONG DESCRIPTION
+    PSScriptBuilder analyzes your source files using PowerShell's AST,
+    resolves all class, enum, and function dependencies automatically, and
+    combines everything into a single, correctly ordered, deployable script.
+
+    As a PowerShell project grows, managing the order of classes, enums,
+    and functions across dozens of files becomes error-prone. Class and
+    enum definitions must appear before the code that references them —
+    base classes before derived classes, enums before the classes that use
+    them, classes before the functions that depend on them.
+    PSScriptBuilder handles this automatically — no manual sorting required.
+
+    Key capabilities:
+      - Automatic dependency ordering for classes, enums, and functions
+      - Cycle detection for fatal circular dependencies
+      - Cross-dependency support (Ordered and Hybrid Mode)
+      - Flexible template system with token placeholders
+      - Five collector types: Using, Enum, Class, Function, File
+      - Project scaffolding via New-PSScriptBuilderProject
+      - Script compression via Compress-PSScriptBuilderScript
+      - Built-in SemVer release management
+
+GETTING STARTED
+    Install the module:
+
+        Install-Module -Name PSScriptBuilder -Scope CurrentUser
+
+    Import (always use 'using module', not Import-Module):
+
+        using module PSScriptBuilder
+
+    Scaffold a new project:
+
+        New-PSScriptBuilderProject -Name "MyProject" -Path "C:\Projects"
+
+    Or build an existing project:
+
+        $contentCollector = New-PSScriptBuilderContentCollector |
+            Add-PSScriptBuilderCollector -Type Class    -IncludePath "src/Classes" |
+            Add-PSScriptBuilderCollector -Type Function -IncludePath "src/Public"
+
+        Invoke-PSScriptBuilderBuild `
+            -ContentCollector $contentCollector `
+            -TemplatePath     "build/MyModule.psm1.template" `
+            -OutputPath       "build/Output/MyModule.psm1"
+
+SEE ALSO
+    Online documentation: https://docs.psscriptbuilder.com
+    Get-Help Invoke-PSScriptBuilderBuild
+    Get-Help New-PSScriptBuilderProject
+    Get-Help Add-PSScriptBuilderCollector
