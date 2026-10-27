@@ -1,0 +1,39 @@
+name: Pester Tests
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    name: Pester Tests (${{ matrix.label }})
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            shell: powershell
+            label: PS5.1
+          - os: windows-latest
+            shell: pwsh
+            label: PS7-Windows
+          - os: ubuntu-latest
+            shell: pwsh
+            label: PS7-Linux
+          - os: macos-latest
+            shell: pwsh
+            label: PS7-macOS
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Pester
+        run: Install-Module -Name Pester -MinimumVersion 5.7.1 -Force -SkipPublisherCheck
+
+      - name: Run Pester tests
+        run: ./tests/Invoke-Tests.ps1 -Suite All

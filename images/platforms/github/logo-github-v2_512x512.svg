@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="outer-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#011c3d"/>
+      <stop offset="100%" stop-color="#000f22"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#012456"/>
+      <stop offset="100%" stop-color="#001a3a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark background fills the GitHub circle crop (radius 256px) -->
+  <rect width="512" height="512" fill="url(#outer-bg)"/>
+
+  <!-- Terminal window frame — scale 1.25 + offset 96, corners within 256px GitHub circle radius -->
+  <rect x="102" y="102" width="308" height="308" fill="url(#bg)" stroke="#0D5AA7" stroke-width="10"/>
+
+  <!-- PS> prompt — top-left inside window -->
+  <text x="115" y="152" font-family="'Consolas','Courier New',monospace" font-size="48"
+        fill="#1577C0" opacity="0.9">PS&gt;</text>
+
+  <!-- Script -->
+  <text x="256" y="287" text-anchor="middle"
+        font-family="'Consolas','Courier New',monospace" font-size="65" font-weight="700"
+        fill="#5DB8F5">Script</text>
+
+  <!-- Builder -->
+  <text x="256" y="364" text-anchor="middle"
+        font-family="'Consolas','Courier New',monospace" font-size="65" font-weight="700"
+        fill="#FFFFFF">Builder</text>
+
+</svg>

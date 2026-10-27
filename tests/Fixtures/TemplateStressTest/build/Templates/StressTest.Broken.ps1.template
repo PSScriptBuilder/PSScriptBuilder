@@ -1,0 +1,5 @@
+# TemplateStressTest (Broken - second, independent Using placeholder)
+{{CoreUsings}}
+{{NotificationUsings}}
+
+{{ORDERED_COMPONENTS}}

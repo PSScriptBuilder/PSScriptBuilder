@@ -1,0 +1,15 @@
+{
+    "release": {
+        "dataFile": ".\\build\\Release\\psscriptbuilder.releasedata.json",
+        "bumpConfigFile": ".\\build\\Release\\psscriptbuilder.bumpconfig.json"
+    },
+    "build": {
+        "outputPath": ".\\build\\Output",
+        "templatePath": ".\\build\\Templates",
+        "backupPath": ".\\build\\Output\\Backup",
+        "orderedComponentsKey": "ORDERED_COMPONENTS",
+        "backupEnabled": false,
+        "syntaxValidationEnabled": true,
+        "writeSourceMap": true
+    }
+}
