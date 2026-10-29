@@ -1,0 +1,85 @@
+# Agent Instructions
+
+## General
+
+- **NEVER** autonomously change code — this includes when responding to a user question or
+  suggestion, where the planned change must be shown in chat only, not applied
+- **ALWAYS** treat an explicit, direct instruction to apply a previously shown change as
+  authorization to proceed
+- **NEVER** install, update, or remove software (e.g. PowerShell modules) on the local machine
+  autonomously — always show the exact command and let it be run manually
+
+## Language
+
+- **ALWAYS** use "German" in chat
+- **ALWAYS** use "English" in source code
+
+## PowerShell
+
+- **ALWAYS** be compatible with PowerShell 5.1 and PowerShell 7
+- **NEVER** use interfaces — PowerShell 5.1 classes do not support interface implementation
+- **NEVER** use ternary operators — ternary operators are not available in PowerShell 5.1
+- **ALWAYS** use `[Environment]::NewLine` instead of `` "`r`n" `` for platform-independent line endings
+- **ALWAYS** use `[System.IO.Path]` methods (or the current platform's directory separator) instead of
+  a hardcoded backslash, for Linux/macOS compatibility
+
+## Development
+
+### Region Blocks
+
+- **NEVER** remove region blocks
+- **NEVER** move region blocks
+- **NEVER** rename region blocks
+- **NEVER** create region blocks
+
+### Functions
+
+- **ALWAYS** declare functions and cmdlets using the `Function` keyword
+- **NEVER** start functions or cmdlets with `[CmdletBinding()]` — it must be declared inside the function body
+
+### Exceptions
+
+- **ALWAYS** throw the most specific exception possible
+- **NEVER** throw an exception using only `throw`
+- **ALWAYS** avoid direct assignment of longer texts for exception messages
+  - **ALWAYS** format longer texts using a format string with placeholders
+  - **ALWAYS** assign the formatted text to a variable, e.g. $message
+  - **ALWAYS** pass the variable as the value for the message parameter to the exception
+
+### Changelog
+
+- **ALWAYS** describe observable behavior in a CHANGELOG entry
+- **NEVER** name internal implementation details (private methods, internal mechanisms) in a
+  CHANGELOG entry
+
+### RFCs
+
+- **ALWAYS** write a retroactive RFC in `internal/rfc/` for a severe or silent-failure bug fix, or
+  a non-obvious design decision — even when the RFC follows rather than precedes the code
+
+## Metadata
+
+### Date Information
+
+- **ALWAYS** update a date with the current date
+
+### Time Information
+
+- **ALWAYS** update a time with the current time
+
+### Version Information
+
+- **NEVER** autonomously change a version
+
+## Build
+
+- **NEVER** run a build autonomously — not even after asking for permission
+- **ALWAYS** suggest running a build manually
+
+## Git
+
+- **ALWAYS** keep a commit message's explanatory body precise and concise
+- **NEVER** append a "Co-Authored-By" (or similar AI-attribution) trailer to a commit message
+- **ALWAYS** create one commit per changed file, not one combined commit per session
+- **ALWAYS** use a Conventional Commits prefix (`fix:`, `docs:`, `test:`, `build:`, `feat:`,
+  `chore:`, `refactor:`) matching the existing history
