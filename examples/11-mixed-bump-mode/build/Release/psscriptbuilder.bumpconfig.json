@@ -1,0 +1,32 @@
+{
+    "bumpFiles": [
+        {
+            "description": "AppConfig module manifest - Mixed bump mode",
+            "path": "build\\Output\\AppConfig.psd1",
+            "items": [
+                {
+                    "pattern": "{{VERSION}}",
+                    "tokens": ["VERSION"]
+                },
+                {
+                    "pattern": "ModuleVersion\\s*=\\s*'({REGEX_VERSION})'",
+                    "tokens": ["VERSION"]
+                }
+            ]
+        },
+        {
+            "description": "AppConfig module template - Mixed bump mode",
+            "path": "build\\Templates\\AppConfig.psm1.template",
+            "items": [
+                {
+                    "pattern": "{{VERSION}}",
+                    "tokens": ["VERSION"]
+                },
+                {
+                    "pattern": "# AppConfig Module v({REGEX_VERSION})",
+                    "tokens": ["VERSION"]
+                }
+            ]
+        }
+    ]
+}

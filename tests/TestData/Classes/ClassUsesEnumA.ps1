@@ -1,0 +1,1 @@
+class ClassUsesEnumA { [EnumA] $Prop }
