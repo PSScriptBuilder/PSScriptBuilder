@@ -1,0 +1,17 @@
+gl-secret-detection-report.json
+build/LocalFeed/
+build/*.buildresult.json
+build/Output/*.sourcemap.json
+tests/coverage.xml
+examples/**/build/Output/*
+!examples/**/build/Output/*.psd1
+examples/**/output.ps1
+examples/**/output.ps1.*.bak
+tests/Fixtures/**/build/Output/*
+!tests/Fixtures/**/build/Output/*.psd1
+
+# Private local documents — not for publication
+.private/
+
+# MkDocs build output
+site/

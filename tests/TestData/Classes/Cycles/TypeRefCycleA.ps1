@@ -1,0 +1,1 @@
+class TypeRefCycleA { [TypeRefCycleB] $Prop }

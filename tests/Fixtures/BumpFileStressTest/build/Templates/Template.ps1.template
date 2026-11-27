@@ -1,0 +1,4 @@
+# StressTest build template
+# Version: {{VERSION}}
+# Date: {{BUILD_DATE}}
+# Build: {{BUILD_NUMBER}}

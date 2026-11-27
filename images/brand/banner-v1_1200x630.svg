@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#012456"/>
+      <stop offset="100%" stop-color="#001333"/>
+    </linearGradient>
+    <linearGradient id="separator" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D5AA7" stop-opacity="0.5"/>
+      <stop offset="70%" stop-color="#0D5AA7" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0D5AA7" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Dot grid texture -->
+  <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="#0D5AA7" opacity="0.1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <!-- === CONTENT === -->
+
+  <!-- Logo 160x160 -->
+  <svg x="80" y="70" width="160" height="160" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="logo-bg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#012456"/>
+        <stop offset="100%" stop-color="#001a3a"/>
+      </linearGradient>
+    </defs>
+    <rect x="5" y="5" width="246" height="246" fill="url(#logo-bg)" stroke="#0D5AA7" stroke-width="10"/>
+    <text x="18" y="52" font-family="'Consolas', 'Courier New', monospace" font-size="42" fill="#2B87D3" opacity="0.9">PS&gt;</text>
+    <text x="128" y="128" font-family="'Consolas', 'Courier New', monospace" font-size="104" font-weight="700" fill="#C8DDEF" text-anchor="middle" dy="0.35em">SB</text>
+  </svg>
+
+  <!-- Title + Tagline block — visually centered on logo midpoint (y=150) -->
+  <text x="276" y="144" font-family="Segoe UI, system-ui, sans-serif" font-size="90" font-weight="700" fill="#ffffff" letter-spacing="1.5">PSScriptBuilder</text>
+
+  <!-- Tagline -->
+  <text x="278" y="214" font-family="Segoe UI, system-ui, sans-serif" font-size="36" fill="#DCDCAA">Script building, evolved.</text>
+
+  <!-- Separator line -->
+  <rect x="80" y="266" width="900" height="3" fill="url(#separator)" rx="1"/>
+
+  <!-- Subtitle -->
+  <text x="80" y="328" font-family="Segoe UI, system-ui, sans-serif" font-size="40" font-weight="600" fill="#3A96DD">Dependency-Aware Script Builder for PowerShell</text>
+
+  <!-- Description -->
+  <text x="80" y="388" font-family="Segoe UI, system-ui, sans-serif" font-size="28" fill="#a0aab4">Build single, deployable scripts from multi-file PowerShell projects &#x2013;&#x2013;</text>
+  <text x="80" y="426" font-family="Segoe UI, system-ui, sans-serif" font-size="28" fill="#a0aab4">with automatic dependency resolution and topological sorting.</text>
+
+  <!-- Feature badges — 4 pills, 15px font, 16px gaps -->
+  <rect x="80"  y="468" width="192" height="30" rx="4" fill="#1B3A5C" stroke="none"/>
+  <text x="176" y="488" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#C8DDEF" text-anchor="middle">PS 5.1 Compatible</text>
+
+  <rect x="288" y="468" width="219" height="30" rx="4" fill="#1B3A5C" stroke="none"/>
+  <text x="397" y="488" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#C8DDEF" text-anchor="middle">Dependency Resolution</text>
+
+  <rect x="523" y="468" width="178" height="30" rx="4" fill="#1B3A5C" stroke="none"/>
+  <text x="612" y="488" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#C8DDEF" text-anchor="middle">Topological Sort</text>
+
+  <rect x="717" y="468" width="196" height="30" rx="4" fill="#1B3A5C" stroke="none"/>
+  <text x="815" y="488" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#C8DDEF" text-anchor="middle">Release Management</text>
+
+  <!-- Footer -->
+  <line x1="80" y1="528" x2="1120" y2="528" stroke="#0D3670" stroke-width="1.5"/>
+  <text x="80"   y="556" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#3A96DD" font-weight="600">psscriptbuilder.com</text>
+  <text x="1120" y="556" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#6a8fa8" text-anchor="end">MIT License &#xB7; Available on PSGallery &#xB7; github.com/PSScriptBuilder</text>
+
+</svg>

@@ -1,0 +1,4 @@
+enum IntegrationType {
+    Jira
+    GitHub
+}
