@@ -1,0 +1,54 @@
+{
+    "bumpFiles": [
+        {
+            "description": "AppConfig module manifest - Mixed bump mode",
+            "path": "build\\Output\\AppConfig.psd1",
+            "items": [
+                {
+                    "pattern": "{{VERSION}}",
+                    "tokens": ["VERSION"]
+                },
+                {
+                    "pattern": "ModuleVersion\\s*=\\s*'({REGEX_VERSION})'",
+                    "tokens": ["VERSION"]
+                }
+            ]
+        },
+        {
+            "description": "AppConfig module template header - Mixed bump mode",
+            "path": "build\\Templates\\AppConfig.psm1.template",
+            "items": [
+                {
+                    "pattern": "{{VERSION}}",
+                    "tokens": ["VERSION"]
+                },
+                {
+                    "pattern": "# AppConfig Module v({REGEX_VERSION})",
+                    "tokens": ["VERSION"]
+                }
+            ]
+        },
+        {
+            "description": "CHANGELOG - Mixed bump mode with VERSION and BUILD_DATE tokens",
+            "path": "CHANGELOG.md",
+            "items": [
+                {
+                    "pattern": "{{VERSION}}",
+                    "tokens": ["VERSION"]
+                },
+                {
+                    "pattern": "{{BUILD_DATE}}",
+                    "tokens": ["BUILD_DATE"]
+                },
+                {
+                    "pattern": "Release: ({REGEX_VERSION})",
+                    "tokens": ["VERSION"]
+                },
+                {
+                    "pattern": "Date: (\\d{4}-\\d{2}-\\d{2})",
+                    "tokens": ["BUILD_DATE"]
+                }
+            ]
+        }
+    ]
+}

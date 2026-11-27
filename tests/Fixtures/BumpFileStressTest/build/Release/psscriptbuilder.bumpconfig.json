@@ -1,0 +1,68 @@
+{
+    "bumpFiles": [
+        {
+            "description": "Manifest - Simple Mode, no fallback (goes stale after run 1)",
+            "path": "build\\Output\\Manifest.psd1",
+            "tokens": ["VERSION"]
+        },
+        {
+            "description": "CHANGELOG - Placeholder Mode with VERSION and BUILD_DATE, no fallback (goes stale after run 1)",
+            "path": "CHANGELOG.md",
+            "items": [
+                {
+                    "pattern": "{{VERSION}}",
+                    "tokens": ["VERSION"]
+                },
+                {
+                    "pattern": "{{BUILD_DATE}}",
+                    "tokens": ["BUILD_DATE"]
+                }
+            ]
+        },
+        {
+            "description": "App config apiVersion - Regex Mode, self-sustaining, never goes stale",
+            "path": "config\\app.json",
+            "items": [
+                {
+                    "pattern": "\"apiVersion\":\\s*\"({REGEX_VERSION})\"",
+                    "tokens": ["VERSION"]
+                }
+            ]
+        },
+        {
+            "description": "Manifest2 - Mixed Bump Mode, Phase 1 (Placeholder)",
+            "path": "build\\Output\\Manifest2.psd1",
+            "items": [
+                {
+                    "pattern": "{{VERSION}}",
+                    "tokens": ["VERSION"]
+                }
+            ]
+        },
+        {
+            "description": "Manifest2 - Mixed Bump Mode, Phase 2 (Regex fallback)",
+            "path": "build\\Output\\Manifest2.psd1",
+            "items": [
+                {
+                    "pattern": "ModuleVersion\\s*=\\s*'({REGEX_VERSION})'",
+                    "tokens": ["VERSION"]
+                }
+            ]
+        },
+        {
+            "description": "Build template - Simple Mode, multiple tokens (mirrors PSScriptBuilder.psm1.template)",
+            "path": "build\\Templates\\Template.ps1.template",
+            "tokens": ["VERSION", "BUILD_DATE", "BUILD_NUMBER"]
+        },
+        {
+            "description": "Build template - Regex fallback for BUILD_NUMBER ONLY - VERSION and BUILD_DATE have none (partial fallback, masks their staleness)",
+            "path": "build\\Templates\\Template.ps1.template",
+            "items": [
+                {
+                    "pattern": "Build:\\s*({REGEX_BUILD_NUMBER})",
+                    "tokens": ["BUILD_NUMBER"]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+enum EnumB { Value1 }

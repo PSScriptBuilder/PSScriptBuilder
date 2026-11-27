@@ -1,0 +1,49 @@
+{
+    "bumpFiles": [
+        {
+            "description": "PSScriptBuilder root module template - Auto token replacement",
+            "path": "build\\Templates\\PSScriptBuilder.psm1.template",
+            "tokens": ["VERSION", "VERSION_FULL", "BUILD_TIMESTAMP", "BUILD_NUMBER", "GIT_COMMIT_SHORT", "GIT_BRANCH", "BUILD_DATE", "BUILD_TIME"]
+        },
+        {
+            "description": "PSScriptBuilder root module template - Multi-phase bumping",
+            "path": "build\\Templates\\PSScriptBuilder.psm1.template",
+            "items": [
+                {
+                    "pattern": "Version\\s*=\\s*'({REGEX_VERSION_FULL})'",
+                    "tokens": ["VERSION_FULL"]
+                },
+                {
+                    "pattern": "BuildTimestamp\\s*=\\s*'({REGEX_BUILD_TIMESTAMP})'",
+                    "tokens": ["BUILD_TIMESTAMP"]
+                },
+                {
+                    "pattern": "BuildNumber\\s*=\\s*'({REGEX_BUILD_NUMBER})'",
+                    "tokens": ["BUILD_NUMBER"]
+                },
+                {
+                    "pattern": "GitCommit\\s*=\\s*'({REGEX_GIT_COMMIT_SHORT})'",
+                    "tokens": ["GIT_COMMIT_SHORT"]
+                },
+                {
+                    "pattern": "GitBranch\\s*=\\s*'({REGEX_GIT_BRANCH})'",
+                    "tokens": ["GIT_BRANCH"]
+                }
+            ]
+        },
+        {
+            "description": "PSScriptBuilder Modul Manifest (.psd1) - Multi-phase bumping",
+            "path": "build\\Output\\PSScriptBuilder.psd1",
+            "items": [
+                {
+                    "pattern": "{{VERSION}}",
+                    "tokens": ["VERSION"]
+                },
+                {
+                    "pattern": "ModuleVersion\\s*=\\s*'({REGEX_VERSION})'",
+                    "tokens": ["VERSION"]
+                }
+            ]
+        }
+    ]
+}

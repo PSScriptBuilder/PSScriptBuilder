@@ -1,0 +1,28 @@
+{
+    "version": {
+        "major":         1,
+        "minor":         0,
+        "patch":         0,
+        "prerelease":    null,
+        "buildmetadata": null,
+        "full":          "1.0.0"
+    },
+    "build": {
+        "number":    0,
+        "date":      "2026-01-01",
+        "time":      "00:00:00",
+        "timestamp": "2026-01-01T00:00:00Z",
+        "year":      2026,
+        "month":     1,
+        "day":       1,
+        "hour":      0,
+        "minute":    0,
+        "second":    0
+    },
+    "git": {
+        "commit":      null,
+        "commitShort": null,
+        "branch":      null,
+        "tag":         null
+    }
+}

@@ -1,0 +1,28 @@
+﻿{
+    "version":  {
+                    "major":  1,
+                    "minor":  4,
+                    "patch":  0,
+                    "prerelease":  "",
+                    "buildmetadata":  "",
+                    "full":  "1.4.0"
+                },
+    "build":  {
+                  "number":  35,
+                  "date":  "2026-11-27",
+                  "time":  "22:01:26",
+                  "timestamp":  "2026-11-27T22:01:26Z",
+                  "year":  2026,
+                  "month":  11,
+                  "day":  27,
+                  "hour":  22,
+                  "minute":  1,
+                  "second":  26
+              },
+    "git":  {
+                "commit":  "fd7e0aaf9483309aac66fb86238c675e85667e61",
+                "commitShort":  "fd7e0aa",
+                "branch":  "main",
+                "tag":  "v1.3.1"
+            }
+}
